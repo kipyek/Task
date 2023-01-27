@@ -1,18 +1,19 @@
-import React, {useState} from 'react';
-import {View, Text, TextInput, Button} from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, TextInput, Button } from 'react-native';
 
-const InputScreen = ({navigation}) => {
+const InputScreen = ({ navigation }) => {
   const [origin, setOrigin] = useState({});
   const [destination, setDestination] = useState({});
   const [nextButtonDisabled, setNextButtonDisabled] = useState(true);
 
   const handleSaveOrigin = (longitude, latitude) => {
-    setOrigin({longitude, latitude});
+    setOrigin({ longitude, latitude });
     setNextButtonDisabled(false);
+    console.log(origin)
   };
 
   const handleSaveDestination = (longitude, latitude) => {
-    setDestination({longitude, latitude});
+    setDestination({ longitude, latitude });
     setNextButtonDisabled(false);
   };
 
@@ -53,7 +54,7 @@ const InputScreen = ({navigation}) => {
       <Button
         title="Next"
         onPress={() =>
-          navigation.navigate('FindDistance', {origin, destination})
+          navigation.navigate('FindDistance', { origin, destination })
         }
         disabled={nextButtonDisabled}
       />
